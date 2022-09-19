@@ -3,20 +3,15 @@
 #include <fstream>
 #include <cstdlib>
 #include <conio.h>
-#define DICTIONARY "dictionary.txt"    //put the name of file representing the dictionary here;
+#define DICTIONARY "dictionary.txt"    
 
 using namespace std;
-
-/*
-This function asks the user for a file name and checks that file for misspelled words
-*/
 
 void checkfile()
 {
     system("cls");
 
-    //loading the dictionary from file in the memory
-    dictionary d("dictionary.txt");
+   
 
     if (!d.load())
     {
@@ -25,7 +20,7 @@ void checkfile()
     }
 
 
-    char text[80];  //stores the name of the file to be checked
+    char text[80];  
 
     cout << "Enter the name of file ";
     cin >> text;
@@ -36,7 +31,6 @@ void checkfile()
     if (!f.is_open())
     {
         cout << "could not open file";
-        //free up memory acquired by the dictionary words if the file does not exist
         d.unload();
         return;
     }
