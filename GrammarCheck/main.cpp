@@ -42,7 +42,7 @@ void checkfile()
 
     while (!f.eof())
     {
-        //Each word is checked against the set of words stored in dictionary and wrong words are printed out
+       
         bool misspelled = !d.check(word);
         if (misspelled)
             cout << word << endl;
@@ -53,20 +53,17 @@ void checkfile()
     _getch();
 }
 
-/*
-This function saves the file typed by user. User signals the end of file by typing EXITTYPING
-*/
 
 void writefile()
 {
     system("cls");
-    char filename[80];  //stores the name of the file to be saved
+    char filename[80]; 
 
 
     fstream f;
     char flag = 'y';
 
-    //take the name of file from user and if that file already exists ask if he/she wants to replace it
+  
     do
     {
         flag = 'y';
@@ -90,7 +87,7 @@ void writefile()
     }
     cout << "Enter text, type EXITTYPING and press enter to end file\n";
 
-    //taking the words from console and printing it in the file
+   
     string word;
     cin >> word;
     while (word.compare("EXITTYPING"))
@@ -103,9 +100,6 @@ void writefile()
     _getch();
 }
 
-/*
-This funciton adds a word to the dictionary
-*/
 
 void addword()
 {
@@ -126,11 +120,7 @@ void addword()
 
 int main()
 {
-    /*The program gives a menu to user where he/she can choose either to
-      check an existing file,
-      create a new file or
-      to add a word in the dictionary
-    */
+   
     while (1)
     {
         system("cls");
