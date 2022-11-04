@@ -46,20 +46,20 @@ MainWindow::~MainWindow() {
 
 void MainWindow::tray_clicked(QSystemTrayIcon::ActivationReason reason) {
     if(reason == QSystemTrayIcon::Context) {
-        myTray->show(); // show tray menu on right-click
+        myTray->show();
     } else if(reason == QSystemTrayIcon::DoubleClick) {
-        showNormal(); // restore window on double-(left)-click
+        showNormal(); 
     }
 }
 
 void MainWindow::lineEdit_textEdited(const QString &arg1) const {
-    ui->pushButton->setEnabled(arg1.length() > 0); // disable pushbutton if user input is empty
+    ui->pushButton->setEnabled(arg1.length() > 0); 
     ui->comboBox->setVisible(!arg1.contains(":"));
 }
 
 void MainWindow::closeEvent(QCloseEvent *) {
-    isClosed = true; // detect when window is being closed (and not just hidden)
-    myTray->hide(); // force the tray icon to close when window is closed
+    isClosed = true;  
+    myTray->hide(); 
 
     currentNumWindows--;
 
@@ -99,6 +99,6 @@ void MainWindow::pushButton_2_clicked() const {
         }
     }
 
-    MainWindow *w = new MainWindow(tempWindowTitle); // create a new timer window
+    MainWindow *w = new MainWindow(tempWindowTitle); 
     w->show();
 }
