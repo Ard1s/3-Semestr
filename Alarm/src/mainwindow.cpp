@@ -8,7 +8,8 @@ unsigned long MainWindow::currentNumWindows = 0;
 unsigned long MainWindow::theWindowID = 0;
 QIcon MainWindow::theIcon; 
 
-MainWindow::MainWindow(const QString &windowTitle, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
+MainWindow::MainWindow(const QString &windowTitle, QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) 
+{
     theWindowID++;
     currentNumWindows++;
 
@@ -37,64 +38,78 @@ MainWindow::MainWindow(const QString &windowTitle, QWidget *parent) : QMainWindo
     this->setAttribute(Qt::WA_DeleteOnClose, true); 
 }
 
-MainWindow::~MainWindow() {
+MainWindow::~MainWindow() 
+{
     delete myTray;
     delete myTrayMenu;
     delete myTimer;
     delete ui;
 }
 
-void MainWindow::tray_clicked(QSystemTrayIcon::ActivationReason reason) {
-    if(reason == QSystemTrayIcon::Context) {
+void MainWindow::tray_clicked(QSystemTrayIcon::ActivationReason reason) 
+{
+    if(reason == QSystemTrayIcon::Context) 
+{
         myTray->show();
-    } else if(reason == QSystemTrayIcon::DoubleClick) {
+    } else if(reason == QSystemTrayIcon::DoubleClick) 
+{
         showNormal(); 
     }
 }
 
-void MainWindow::lineEdit_textEdited(const QString &arg1) const {
+void MainWindow::lineEdit_textEdited(const QString &arg1) const 
+{
     ui->pushButton->setEnabled(arg1.length() > 0); 
     ui->comboBox->setVisible(!arg1.contains(":"));
 }
 
-void MainWindow::closeEvent(QCloseEvent *) {
+void MainWindow::closeEvent(QCloseEvent *) 
+{
     isClosed = true;  
     myTray->hide(); 
 
     currentNumWindows--;
 
-    if(!currentNumWindows) {
+    if(!currentNumWindows) 
+{
         QApplication::quit();
     }
 }
 
-void MainWindow::hideEvent(QHideEvent *) {
-    if(!isClosed && QSystemTrayIcon::isSystemTrayAvailable()) {
+void MainWindow::hideEvent(QHideEvent *) 
+{
+    if(!isClosed && QSystemTrayIcon::isSystemTrayAvailable()) 
+{
         myTray->show();
         this->hide();
     }
 }
 
-void MainWindow::showEvent(QShowEvent *) {
+void MainWindow::showEvent(QShowEvent *) 
+{
     myTray->hide();
     this->show();
     this->activateWindow();
     this->raise();
 }
 
-void MainWindow::pushButton_2_clicked() const {
+void MainWindow::pushButton_2_clicked() const 
+{
     QString tempWindowTitle = tr("Little Timer ") + QString::number(theWindowID);
 
-    if(QGuiApplication::keyboardModifiers() & Qt::ShiftModifier) {
+    if(QGuiApplication::keyboardModifiers() & Qt::ShiftModifier) 
+{
         QInputDialog dialog;
         dialog.setWindowTitle(tr("Custom Name"));
         dialog.setLabelText(tr("Set the name of the new timer:"));
         dialog.setTextValue(tempWindowTitle);
         dialog.setWindowIcon(theIcon);
 
-        if(dialog.exec() == QDialog::Accepted) {
+        if(dialog.exec() == QDialog::Accepted) 
+{
             tempWindowTitle = dialog.textValue();
-        } else {
+        } else 
+{
             return;
         }
     }
