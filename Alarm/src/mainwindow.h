@@ -6,24 +6,26 @@
 
 #include "ui_mainwindow.h"
 
-namespace Ui {
+namespace Ui 
+{
     class MainWindow;
 }
 
 class SimpleTimer;
 
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow 
+{
         Q_OBJECT
 
     public:
-        explicit MainWindow(const QString &windowTitle = "Little Timer", QWidget *parent = Q_NULLPTR);
+        explicit MainWindow(const QString &windowTitle = "Nedo Alarm", QWidget *parent = Q_NULLPTR);
         ~MainWindow();
         QSystemTrayIcon *myTray;
         static QIcon theIcon;
 
     private slots:
         void tray_clicked(QSystemTrayIcon::ActivationReason);
-        void lineEdit_textEdited(const QString &arg1) const; // input edit field
+        void lineEdit_textEdited(const QString &arg1) const; // edit field
         void pushButton_2_clicked() const; // "+" button
         void closeEvent(QCloseEvent *);
         void hideEvent(QHideEvent *);
