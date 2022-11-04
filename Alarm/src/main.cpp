@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
 	Q_INIT_RESOURCE(images); 
 	QApplication app(argc, argv); 
 	app.setQuitOnLastWindowClosed(false);  
@@ -11,7 +12,8 @@ int main(int argc, char *argv[]) {
 
 	
 	MainWindow *w = new MainWindow();
-	if ( arguments.size() > 1 ) {
+	if ( arguments.size() > 1 ) 
+{
 		w->setWindowTitle(arguments.mid(1).join(' '));
 	}
 	w->show();
