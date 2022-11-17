@@ -39,5 +39,5 @@ private:
 signals:
 
 };
-
+//
 #endif // SCRIBBLEAREA_H
